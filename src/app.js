@@ -40,6 +40,18 @@ rutas.route('/tasks/:user/:pass/:instancia')
 rutas.route('/tasks/:user/:pass/:tarea/claim')
   .post(reqBpm.claimTask);
 
+rutas.route('/tasks/:user/:pass/:tarea/start')
+  .post(reqBpm.startTask);
+
+rutas.route('/tasks/:user/:pass/:tarea/complete')
+  .post(reqBpm.completeTask);
+
+rutas.route('/tasks/:user/:pass/:tarea/release')
+  .post(reqBpm.releaseTask);
+
+rutas.route('/signal/:user/:pass/:instancia/:signal/:string')
+  .post(reqBpm.sendSignal);
+
 app.use('/api', rutas);
 
 // The 404 Route (ALWAYS Keep this as the last route)
