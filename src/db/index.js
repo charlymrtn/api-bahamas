@@ -5,7 +5,7 @@
  *  more info at http://docs.sequelizejs.com/manual/installation/usage.html
  */
 const Sequelize = require('sequelize');
-const config = require(''../../config/config');
+const config = require('../../config/config');
 // TODO: haz require de todos los modelos aca, asi como estan abajo.
 const AccountPurposeType = require('./models/AccountPurposeType');
 const Lead = require('./models/Lead');
