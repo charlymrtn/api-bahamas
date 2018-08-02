@@ -5,7 +5,7 @@ const request = require('request');
 const _ = require('lodash');
 
 const baseUrl = 'ec2-35-161-130-182.us-west-2.compute.amazonaws.com:8080/kie-server/services/rest';
-const container = 'pbil_1.0.9';
+const container = 'pbil_1.0.12';
 
 exports.startInstance = (req, res) => {
     const user = req.params.user;
@@ -225,6 +225,47 @@ exports.sendSignal = (req, res) => {
         //         mensaje: 'completed task'
         //     }]);
         // }
+
+    });
+};
+
+exports.assignVariable = (req, res) => {
+    const user = req.params.user;
+    const pass = req.params.pass;
+    const instancia = req.params.instancia;
+    const variable = req.params.variable;
+    const valor = req.params.valor;
+
+    var req = valor;
+
+    const url = `http://${user}:${pass}@${baseUrl}/server/containers/${container}/processes/instances/${instancia}/variable/${variable}`;
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    };
+
+    request.put({
+        url,
+        body: req,
+        json: true
+    }, (error, response, body) => {
+        if (error) return res.status(400).jsonp({
+            mensaje: 'Error assign variable',
+            error: error
+        });
+
+
+        console.log('PUT /variable');
+        if (body) {
+             res.status(500).jsonp([{
+            mensaje: body
+            }]);
+        }else {
+            res.status(200).jsonp([{
+                mensaje: 'assigned variable'
+             }]);
+        }
 
     });
 };

@@ -21,6 +21,7 @@ app.use(helmet());
 const rutas = express.Router();
 
 const reqBpm = require('./routes/bpm');
+const reqLead = require('./routes/lead');
 
 // Put here route middlewares
 logger.info('setting up routes...');
@@ -31,6 +32,8 @@ app.use('/hello', (req, res) => {
   });
 });
 
+
+// rutas BPM
 rutas.route('/instance/start/:user/:pass')
   .post(reqBpm.startInstance);
 
@@ -51,6 +54,13 @@ rutas.route('/tasks/:user/:pass/:tarea/release')
 
 rutas.route('/signal/:user/:pass/:instancia/:signal/:string')
   .post(reqBpm.sendSignal);
+
+rutas.route('/variable/:user/:pass/:instancia/:variable/:valor')
+  .post(reqBpm.assignVariable);
+
+// rutas lead
+rutas.route('/lead')
+  .post(reqLead.storeLead);
 
 app.use('/api', rutas);
 
