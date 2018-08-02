@@ -37,6 +37,9 @@ rutas.route('/instance/start/:user/:pass')
 rutas.route('/tasks/:user/:pass/:instancia')
   .get(reqBpm.listTasks);
 
+rutas.route('/tasks/:user/:pass/:tarea/claim')
+  .post(reqBpm.claimTask);
+
 app.use('/api', rutas);
 
 // The 404 Route (ALWAYS Keep this as the last route)
