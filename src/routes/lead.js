@@ -1,9 +1,8 @@
 /* eslint-disable */
 'use strict';
 
-const lead = sequelize.import('../models/Lead')
 // TODO: usando destructuring, importa tus schemas al archivo en el que lo usaras, como abajo.SOlo los schemas que usaras no es necesario traerlos todos.
-const { Lead, AccountPurposeType }  = require('../db');
+const { Lead }  = require('../db');
 
 exports.storeLead = (req, res) => {
     const name = req.body.name;
