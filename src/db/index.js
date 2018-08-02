@@ -5,8 +5,7 @@
  *  more info at http://docs.sequelizejs.com/manual/installation/usage.html
  */
 const Sequelize = require('sequelize');
-const config = require('../../config/index');
-
+const config = require('../../config');
 // TODO: haz require de todos los modelos aca, asi como estan abajo.
 const AccountPurposeType = require('./models/AccountPurposeType');
 const Lead = require('./models/Lead');
@@ -28,11 +27,11 @@ const mySql = new Sequelize(config.db.name, config.db.user, config.db.pass, {
 });
 
 const authenticateDb = () => mySql.authenticate()
-                            .then(function () {
-    console.log("CONNECTED! ");
+  .then(() => {
+    console.log('CONNECTED!');
   })
-  .catch(function (err) {
-    console.log("SOMETHING DONE GOOFED");
+  .catch((err) => {
+    console.log(`SOMETHING DONE GOOFED${err}`);
   })
   .done();
 
