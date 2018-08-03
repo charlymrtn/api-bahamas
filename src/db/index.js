@@ -21,7 +21,7 @@ const mySql = new Sequelize(config.db.name, config.db.user, config.db.pass, {
     acquire: 30000,
     idle: 10000
   },
-  logger: false
+  logging: false
 });
 
   const authenticateDb = () => mySql.authenticate().then(()=>{
