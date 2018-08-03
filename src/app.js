@@ -62,6 +62,12 @@ rutas.route('/variable/:user/:pass/:instancia/:variable/:valor')
 rutas.route('/lead')
   .post(reqLead.storeLead);
 
+rutas.route('/lead')
+  .get(reqLead.showLeads);
+
+rutas.route('/lead/:id')
+  .get(reqLead.showLead);
+
 app.use('/api', rutas);
 
 // The 404 Route (ALWAYS Keep this as the last route)

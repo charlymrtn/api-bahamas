@@ -6,10 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
-      references: {
-        model: 'TransactionEstimation',
-        key: 'leadID'
-      }
+      autoIncrement: true
     },
     name: {
       type: DataTypes.STRING(100),
@@ -21,18 +18,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     nationality: {
       type: DataTypes.CHAR(3),
-      allowNull: true,
-      unique: true
+      allowNull: true
     },
     citizenship: {
       type: DataTypes.CHAR(3),
-      allowNull: true,
-      unique: true
+      allowNull: true
     },
     placeOfBirth: {
       type: DataTypes.STRING(50),
-      allowNull: true,
-      unique: true
+      allowNull: true
     },
     documentType: {
       type: DataTypes.CHAR(1),
@@ -113,8 +107,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.CHAR(1),
       allowNull: true,
       defaultValue: 'N'
+    },
+    processInstanceID: {
+      type: DataTypes.BIGINT(20),
+      allowNull: true
     }
   }, {
-    tableName: 'Lead'
+    tableName: 'Lead',
+    createdAt: false,
+    updatedAt: false
   });
 };

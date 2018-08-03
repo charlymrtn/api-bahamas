@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 const http = require('http');
 
 const app = require('./src/app.js');
@@ -8,7 +8,7 @@ const logger = require('./config/logger');
 
 const server = http.createServer(app);
 
-authenticateDb
+authenticateDb()
   .then(() => {
     console.log(`Connection ${config.db.host} has been established successfully.`);
   })

@@ -5,7 +5,7 @@ const request = require('request');
 const _ = require('lodash');
 
 const baseUrl = 'ec2-35-161-130-182.us-west-2.compute.amazonaws.com:8080/kie-server/services/rest';
-const container = 'pbil_1.0.12';
+const container = 'pbil_1.0.33';
 
 exports.startInstance = (req, res) => {
     const user = req.params.user;
