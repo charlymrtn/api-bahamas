@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  *  Warning! you need to install driver for database to use (MSSQL, PostgreSql, SQLite, MySql),
  *  add set options in .env variables and change dialect for the database.
@@ -26,12 +27,12 @@ const mySql = new Sequelize(config.db.name, config.db.user, config.db.pass, {
   logger: false
 });
 
-const authenticateDb = () => mySql.authenticate()
+  const authenticateDb = () => mySql.authenticate()
   .then(() => {
     console.log('CONNECTED!');
   })
   .catch((err) => {
-    console.log(`SOMETHING DONE GOOFED${err}`);
+    console.log(`SOMETHING DONE GOOFED ${err}`);
   })
   .done();
 
