@@ -4,7 +4,7 @@ const winston = require('winston');
 
 winston.emitErrs = true;
 
-const fileTransport = new winston.transports.File({
+/* const fileTransport = new winston.transports.File({
   filename: './logs/all-logs.log',
   handleExceptions: true,
   json: true,
@@ -12,6 +12,7 @@ const fileTransport = new winston.transports.File({
   maxFiles: 5,
   colorize: false
 });
+ */
 
 const consoleTransport = new winston.transports.Console({
   handleExceptions: true,
@@ -20,7 +21,7 @@ const consoleTransport = new winston.transports.Console({
 });
 
 const logger = new winston.Logger({
-  transports: [fileTransport, consoleTransport],
+  transports: [consoleTransport],
   exitOnError: false
 });
 
