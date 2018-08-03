@@ -27,17 +27,17 @@ const logger = new winston.Logger({
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
   logger.transports.console.level = 'info';
-  logger.transports.file.level = 'info';
+  // logger.transports.file.level = 'info';
 }
 
 if (process.env.NODE_ENV === 'development') {
   logger.transports.console.level = 'debug';
-  logger.transports.file.level = 'debug';
+  // logger.transports.file.level = 'debug';
 }
 
 if (process.env.NODE_ENV === 'local') {
   logger.transports.console.level = 'debug';
-  logger.transports.file.level = 'debug';
+  // logger.transports.file.level = 'debug';
 }
 
 module.exports = logger;
