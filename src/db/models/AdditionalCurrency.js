@@ -18,6 +18,8 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 'A'
     }
   }, {
-    tableName: 'AdditionalCurrency'
+    tableName: 'AdditionalCurrency',
+      createdAt: false,
+      updatedAt: false
   });
 };

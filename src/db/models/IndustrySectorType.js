@@ -5,11 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     industrySectorID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'ThirdPartyInformation',
-        key: 'industrySectorID'
-      }
+      primaryKey: true
     },
     nombre: {
       type: DataTypes.STRING(50),

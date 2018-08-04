@@ -1,7 +1,5 @@
 /* eslint-disable */
 
-/* eslint-disable */
-
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Address', {
     addressID: {
@@ -35,10 +33,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     country: {
       type: DataTypes.CHAR(3),
-      allowNull: true,
-      unique: true
+      allowNull: true
     }
   }, {
-    tableName: 'Address'
+    tableName: 'Address',
+      createdAt: false,
+      updatedAt: false
   });
 };

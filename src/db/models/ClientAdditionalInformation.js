@@ -14,28 +14,24 @@ module.exports = function(sequelize, DataTypes) {
     },
     professionalActivityType: {
       type: DataTypes.CHAR(1),
-      allowNull: true,
-      unique: true
+      allowNull: true
     },
     industrySectorID: {
       type: DataTypes.INTEGER(11),
       allowNull: true,
-      unique: true
+      defaultValue: '1'
     },
     yearsOfActivityType: {
       type: DataTypes.CHAR(1),
-      allowNull: true,
-      unique: true
+      allowNull: true
     },
     averageYearRevenue: {
       type: DataTypes.CHAR(1),
-      allowNull: true,
-      unique: true
+      allowNull: true
     },
     civilStatus: {
       type: DataTypes.CHAR(1),
-      allowNull: true,
-      unique: true
+      allowNull: true
     },
     numberOfChildren: {
       type: DataTypes.INTEGER(11),
@@ -49,8 +45,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     originRelationshipid: {
       type: DataTypes.CHAR(1),
-      allowNull: true,
-      unique: true
+      allowNull: true
     }
   }, {
     tableName: 'ClientAdditionalInformation'

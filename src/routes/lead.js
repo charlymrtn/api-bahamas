@@ -50,3 +50,58 @@ exports.showLead = (req, res) => {
             message: error
         }));
 };
+
+exports.getLeadByProccessID = (req, res) => {
+    const id = req.params.proccessID;
+
+    Lead.findOne({where: {proccessID: id}})
+        .then(lead => res.status(200).json({
+            error: false,
+            data: lead,
+            message: 'lead ' + id
+        }))
+        .catch(error => res.status(500).json({
+            error: true,
+            data: [],
+            message: error
+        }));
+};
+
+exports.updateLead = (req, res) => {
+    const id = req.params.id;
+    const leadObj = req.body;
+
+    Lead.update(leadObj,{
+        where: {
+            leadID: id
+        }
+    })
+        .then(lead => res.status(200).json({
+            error: false,
+            data: lead,
+            message: 'lead updated'
+        }))
+        .catch(error => res.status(500).json({
+            error: true,
+            data: [],
+            message: error
+        }));
+};
+
+exports.deleteLead = (req, res) => {
+    const id = req.params.id;
+
+    Lead.destroy({
+            where: {
+                leadID: id
+            }
+        })
+        .then(starus => res.status(200).json({
+            error: false,
+            message: 'lead deleted'
+        }))
+        .catch(error => res.status(500).json({
+            error: true,
+            message: error
+        }));
+};

@@ -9,24 +9,17 @@ module.exports = function(sequelize, DataTypes) {
     },
     sourceTypeCode: {
       type: DataTypes.CHAR(1),
-      allowNull: false,
-      references: {
-        model: 'SourceOfFund',
-        key: 'sourceCode'
-      }
+      allowNull: false
     },
     bankID: {
       type: DataTypes.INTEGER(11),
       allowNull: true,
-      unique: true
+      defaultValue: '1'
     },
     fundType: {
       type: DataTypes.CHAR(1),
       allowNull: false,
-      references: {
-        model: 'FoundType',
-        key: 'fundTypeCode'
-      }
+      defaultValue: '1'
     },
     briefExplanation: {
       type: DataTypes.STRING(250),
