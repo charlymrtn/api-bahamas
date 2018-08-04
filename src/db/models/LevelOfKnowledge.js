@@ -1,4 +1,4 @@
-/* jshint indent: 2 */
+/* eslint-disable */
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('LevelOfKnowledge', {

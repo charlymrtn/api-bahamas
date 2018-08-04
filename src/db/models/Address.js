@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+/* eslint-disable */
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Address', {
     addressID: {
