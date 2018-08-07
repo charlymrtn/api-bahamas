@@ -22,5 +22,9 @@ module.exports = {
   remoteLog: {
     host: process.env.LOG_HOST,
     port: Number(process.env.LOG_PORT)
+  },
+  bpm: {
+    startInstance:
+      '/containers/pbil_1.0.33/processes/pbil.clientOnboarding/instances'
   }
 };
