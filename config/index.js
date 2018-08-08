@@ -6,12 +6,12 @@ module.exports = {
     secret: process.env.SESSION_KEY
   },
   db: {
-    name: process.env.SQL_DB,
-    host: process.env.SQL_HOST,
-    port: Number(process.env.SQL_PORT),
-    user: process.env.SQL_USER,
-    pass: process.env.SQL_PASS,
-    dialect: process.env.SQL_DIALECT
+    name: process.env.SQL_DB || 'bahamas',
+    host: process.env.SQL_HOST || 'mysql.ckrklcnlienq.us-west-2.rds.amazonaws.com',
+    port: Number(process.env.SQL_PORT) || 3306,
+    user: process.env.SQL_USER || 'admin',
+    pass: process.env.SQL_PASS || 'Alkimia123.',
+    dialect: process.env.SQL_DIALECT || 'mysql'
   },
   port: Number(process.env.PORT),
   twitter: {

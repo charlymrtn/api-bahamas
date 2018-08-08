@@ -13,7 +13,7 @@ exports.storeLead = (req, res) => {
     .post(startInstance)
     .then(res => Object.assign({ processInstanceID: res }, registerObj))
     .then(leadObj => Lead.create(leadObj))
-    .then(res => startTask('', ''))
+    .then(res => startTask(res.data.processInstanceID, res.data.nationality))
     .then(lead =>
       res.status(200).json({
         error: false,
