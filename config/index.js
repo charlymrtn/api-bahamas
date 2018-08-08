@@ -8,7 +8,7 @@ module.exports = {
   db: {
     name: process.env.SQL_DB,
     host: process.env.SQL_HOST,
-    port: process.env.SQL_PORT,
+    port: Number(process.env.SQL_PORT),
     user: process.env.SQL_USER,
     pass: process.env.SQL_PASS,
     dialect: process.env.SQL_DIALECT
@@ -23,8 +23,11 @@ module.exports = {
     host: process.env.LOG_HOST,
     port: Number(process.env.LOG_PORT)
   },
-  bpm: {
+  bpmData: {
     startInstance:
-      '/containers/pbil_1.0.33/processes/pbil.clientOnboarding/instances'
+      '/containers/pbil_1.0.33/processes/pbil.clientOnboarding/instances',
+    user: process.env.BPM_USER,
+    pass: process.env.BPM_PASS,
+    container: 'pbil_1.0.33'
   }
 };

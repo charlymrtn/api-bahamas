@@ -13,7 +13,8 @@
     "test": "mocha",
     "local-test": "env-cmd --fallback .env.local mocha",
     "test-coverage": "nyc --reporter=text --reporter=html mocha --timeout=3000",
-    "import": "sequelize-auto -o src/models -d bahamas -h mysql.ckrklcnlienq.us-west-2.rds.amazonaws.com -u admin -p 3306 -x Alkimia123. -e mysql"
+    "import": "sequelize-auto -o src/models -d bahamas -h mysql.ckrklcnlienq.us-west-2.rds.amazonaws.com -u admin -p 3306 -x Alkimia123. -e mysql",
+    "bpm": "env-cmd node src/bpm-client/task.js"
   },
   "keywords": [
     "Express",
