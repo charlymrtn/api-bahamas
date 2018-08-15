@@ -20,12 +20,10 @@ app.use(helmet());
 
 const rutas = express.Router();
 
-const reqBpm = require('./routes/bpm');
 const reqLead = require('./routes/lead');
-const reqCountry = require('./routes/country');
-const reqCurrency = require('./routes/AdditionalCurrency');
-const reqAddress = require('./routes/Address');
-const reqAdditionalnfo = require('./routes/ClientAdditionalInformation');
+const {
+  listTasks
+} = require('./routes/bpm');
 
 // Put here route middlewares
 logger.info('setting up routes...');
@@ -36,78 +34,13 @@ app.use('/hello', (req, res) => {
   });
 });
 
+// rutas V2
 
-// rutas BPM
-rutas.route('/instance/start/:user/:pass')
-  .post(reqBpm.startInstance);
-
-rutas.route('/tasks/:user/:pass/:instancia')
-  .get(reqBpm.listTasks);
-
-rutas.route('/tasks/:user/:pass/:tarea/claim')
-  .post(reqBpm.claimTask);
-
-rutas.route('/tasks/:user/:pass/:tarea/start')
-  .post(reqBpm.startTask);
-
-rutas.route('/tasks/:user/:pass/:tarea/complete')
-  .post(reqBpm.completeTask);
-
-rutas.route('/tasks/:user/:pass/:tarea/release')
-  .post(reqBpm.releaseTask);
-
-rutas.route('/signal/:user/:pass/:instancia/:signal/:string')
-  .post(reqBpm.sendSignal);
-
-rutas.route('/variable/:user/:pass/:instancia/:variable/:valor')
-  .post(reqBpm.assignVariable);
-
-// rutas lead
-rutas.route('/lead')
+rutas.route('/lead/register')
   .post(reqLead.storeLead);
 
-rutas.route('/lead')
-  .get(reqLead.showLeads);
-
-rutas.route('/lead/:id')
-  .put(reqLead.updateLead);
-
-rutas.route('/lead/:id')
-  .delete(reqLead.deleteLead);
-
-rutas.route('/lead/:id')
-  .get(reqLead.showLead);
-
-rutas.route('/lead/proccess/:proccessID')
-  .get(reqLead.getLeadByProccessID);
-
-// rutas additional currency
-rutas.route('/currency')
-  .post(reqCurrency.storeCurrency);
-
-rutas.route('/currency/:id')
-  .get(reqCurrency.getCurrency);
-
-// rutas Address
-rutas.route('/address')
-  .post(reqAddress.storeAddress);
-
-rutas.route('/address/:id')
-  .get(reqAddress.getAddress);
-
-// rutas additional client info
-rutas.route('/additionalInfo')
-  .post(reqAdditionalnfo.storeAdditionalInfo);
-
-rutas.route('/additionalInfo/:leadId')
-  .get(reqAdditionalnfo.getAdditionalInfoByLeadID);
-
-// ruta country
-rutas.route('/countries')
-  .get(reqCountry.countries);
-
-rutas.route('/countries/name/:code')
-  .get(reqCountry.getCountryName);
+rutas.route('/tasks/:id')
+  .get(listTasks);
 
 app.use('/api', rutas);
 

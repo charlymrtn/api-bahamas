@@ -1,57 +1,32 @@
 /* eslint-disable */
 'use strict';
 
-const request = require('request');
-const _ = require('lodash');
+const { bpm } = require('../bpm-client');
 
-const baseUrl = 'ec2-35-161-130-182.us-west-2.compute.amazonaws.com:8080/kie-server/services/rest';
-const container = 'pbil_1.0.33';
+const listTasks = (req, res) => {
+    const instanceId = req.params.id;
+    console.log(instanceId);
 
-exports.startInstance = (req, res) => {
-    const user = req.params.user;
-    const pass = req.params.pass;
+    bpm.get(`/queries/tasks/instances/process/${instanceId}`)
+        .then((tasks) => {
+            console.log(tasks.data);
 
-    const urlIniciar = `http://${user}:${pass}@${baseUrl}/server/containers/${container}/processes/pbil.clientOnboarding/instances`;
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    };
-
-     request.post({
-         url: urlIniciar,
-         headers
-     }, (error, response, body) => {
-
-         //if(O.length <= 0) return res.status(400).jsonp({mensaje:'Error al avanzar instancia'});
-         console.log('GET /instance/start');
-         //const resp = JSON.parse(body);
-         res.status(200).jsonp(body);
-     });
+            res.status(201).json({
+                error: false,
+                data: tasks.data,
+                message: `list of tasks of instance ${instanceId}`
+            });
+        })
+        .catch(error => res.status(501).json({
+            error: true,
+            data: [],
+            message: error
+        }));
 };
 
-exports.listTasks = (req, res) => {
+module.exports = {listTasks};
 
-    const user = req.params.user;
-    const pass = req.params.pass;
-    const instancia = req.params.instancia;
-    const url = `http://${user}:${pass}@${baseUrl}/server/queries/tasks/instances/process/${instancia}`;
-    const headers = {
-        'Accept': 'application/json'
-    };
-
-    request({
-        url: url,
-        headers: headers
-    }, (error, response, body) => {
-        console.log('GET /tasks');
-        const resp = JSON.parse(body);
-        res.status(200).send(resp);
-
-    });
-};
-
-exports.claimTask = (req, res) =>{
+/* exports.claimTask = (req, res) =>{
     const user = req.params.user;
     const pass = req.params.pass;
     const tarea = req.params.tarea;
@@ -269,3 +244,4 @@ exports.assignVariable = (req, res) => {
 
     });
 };
+ */
