@@ -111,6 +111,10 @@ module.exports = function(sequelize, DataTypes) {
     processInstanceID: {
       type: DataTypes.BIGINT(20),
       allowNull: true
+    },
+    telephoneNumber: {
+      type: DataTypes.STRING(50),
+      allowNull: true
     }
   }, {
     tableName: 'Lead',
